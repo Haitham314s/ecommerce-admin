@@ -28,6 +28,7 @@ function Modal({ title, description, isOpen, onClose, children }: ModalProps) {
       <DialogContent>
         <DialogHeader>{title}</DialogHeader>
         <DialogDescription>{description}</DialogDescription>
+        {children}
       </DialogContent>
     </Dialog>
   );
