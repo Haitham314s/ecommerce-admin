@@ -1,6 +1,7 @@
 "use client";
 
 import { Store } from "@prisma/client";
+import { CommandSeparator } from "cmdk";
 import {
   Check,
   ChevronsUpDown,
@@ -26,7 +27,6 @@ import {
 } from "@/components/ui/Popover";
 import { useStoreModal } from "@/hooks/UseStoreModal";
 import { cn } from "@/lib/utils";
-import { CommandSeparator } from "cmdk";
 
 type PopoverTriggerProps = ComponentPropsWithoutRef<typeof PopoverTrigger>;
 

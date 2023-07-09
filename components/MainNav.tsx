@@ -1,9 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { HTMLAttributes } from "react";
+
+import { cn } from "@/lib/utils";
 
 type Props = {
   className?: string & HTMLAttributes<HTMLElement>;
@@ -14,6 +15,11 @@ function MainNav({ className, ...props }: Props) {
   const params = useParams();
 
   const routes = [
+    {
+      href: `/${params.storeId}`,
+      label: "Overview",
+      active: pathname === `/${params.storeId}`,
+    },
     {
       href: `/${params.storeId}/settings`,
       label: "Settings",
