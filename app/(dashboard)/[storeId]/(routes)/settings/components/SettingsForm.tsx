@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
 
+import AlertModal from "@/components/modals/AlertModal";
 import { Button } from "@/components/ui/Button";
 import {
   Form,
@@ -62,8 +63,31 @@ function SettingsForm({ initialData }: SettingsFormProps) {
     console.log(data);
   };
 
+  const onDelete = async () => {
+    try {
+      setLoading(false);
+      await axios.delete(`/api/stores/${params.storeId}`);
+
+      router.refresh();
+      router.push("/");
+      toast.success("Store deleted.");
+    } catch (error: any) {
+      toast.error("Make sure you removed all products and categories first.");
+    } finally {
+      setLoading(false);
+      setOpen(false);
+    }
+  };
+
   return (
     <>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        loading={loading}
+      />
+
       <div className="flex items-center justify-between">
         <Heading title="Settings" description="Manage store preferences" />
         <Button
