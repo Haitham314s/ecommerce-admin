@@ -1,9 +1,19 @@
-type Props = {};
+import prismadb from "@/lib/prismadb";
 
-function DashboardPage({}: Props) {
+interface DashboardPageProps {
+  params: { storeId: string };
+}
+
+async function DashboardPage({ params: { storeId } }: DashboardPageProps) {
+  const store = await prismadb.store.findFirst({
+    where: {
+      id: storeId,
+    },
+  });
+
   return (
     <div>
-      <h1>This is a dashboard</h1>
+      <h1>Active Store: {store?.name}</h1>
     </div>
   );
 }
