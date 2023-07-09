@@ -3,11 +3,11 @@ import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
-type Props = {
+interface SetupLayoutProps {
   children: ReactNode;
-};
+}
 
-async function SetupLayout({ children }: Props) {
+async function SetupLayout({ children }: SetupLayoutProps) {
   const { userId } = auth();
 
   if (!userId) redirect("/sign-in");

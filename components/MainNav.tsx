@@ -6,11 +6,11 @@ import { HTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
-type Props = {
+interface MainNavProps {
   className?: string & HTMLAttributes<HTMLElement>;
-};
+}
 
-function MainNav({ className, ...props }: Props) {
+function MainNav({ className, ...props }: MainNavProps) {
   const pathname = usePathname();
   const params = useParams();
 

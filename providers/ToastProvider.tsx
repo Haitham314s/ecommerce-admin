@@ -2,9 +2,7 @@
 
 import { Toaster } from "react-hot-toast";
 
-type Props = {};
-
-function ToastProvider({}: Props) {
+function ToastProvider() {
   return <Toaster />;
 }
 

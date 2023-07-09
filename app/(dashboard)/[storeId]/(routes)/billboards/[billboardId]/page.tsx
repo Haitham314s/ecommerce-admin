@@ -1,11 +1,11 @@
 import prismadb from "@/lib/prismadb";
 import BillboardForm from "./components/BillboardForm";
 
-type Props = {
+interface BillboardPageProps {
   params: { billboardId: string };
-};
+}
 
-async function BillboardPage({ params: { billboardId } }: Props) {
+async function BillboardPage({ params: { billboardId } }: BillboardPageProps) {
   const billboard = await prismadb.billboard.findUnique({
     where: {
       id: billboardId,

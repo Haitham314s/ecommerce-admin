@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 
 import StoreModal from "@/components/modals/StoreModal";
 
-type Props = {};
-
-function ModalProvider({}: Props) {
+function ModalProvider() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {

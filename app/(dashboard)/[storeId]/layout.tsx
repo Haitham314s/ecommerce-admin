@@ -5,12 +5,15 @@ import { ReactNode } from "react";
 
 import Navbar from "@/components/Navbar";
 
-type Props = {
+interface DashboardLayoutProps {
   children: ReactNode;
   params: { storeId: string };
-};
+}
 
-async function DashboardLayout({ children, params: { storeId } }: Props) {
+async function DashboardLayout({
+  children,
+  params: { storeId },
+}: DashboardLayoutProps) {
   const { userId } = auth();
 
   if (!userId) redirect("/sign-in");

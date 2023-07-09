@@ -5,9 +5,7 @@ import MainNav from "@/components/MainNav";
 import StoreSwitcher from "@/components/StoreSwitcher";
 import prismadb from "@/lib/prismadb";
 
-type Props = {};
-
-async function Navbar({}: Props) {
+async function Navbar() {
   const { userId } = auth();
   if (!userId) redirect("/sign-in");
 

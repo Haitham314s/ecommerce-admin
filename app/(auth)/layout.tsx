@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-type Props = {
+interface AuthLayoutProps {
   children: ReactNode;
-};
+}
 
-function AuthLayout({ children }: Props) {
+function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <div className="flex items-center justify-center h-screen">{children}</div>
   );
