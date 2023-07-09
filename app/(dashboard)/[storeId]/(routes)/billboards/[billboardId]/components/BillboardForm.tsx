@@ -20,9 +20,9 @@ import {
   FormLabel,
 } from "@/components/ui/Form";
 import Heading from "@/components/ui/Heading";
+import ImageUpload from "@/components/ui/ImageUpload";
 import { Input } from "@/components/ui/Input";
 import { Separator } from "@/components/ui/Separator";
-import { useOrigin } from "@/hooks/UseOrigin";
 
 const formSchema = z.object({
   label: z.string().min(1),
@@ -38,7 +38,6 @@ interface BillboardFormProps {
 function BillboardForm({ initialData }: BillboardFormProps) {
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -117,6 +116,24 @@ function BillboardForm({ initialData }: BillboardFormProps) {
       <Separator />
       <Form {...form}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 w-full">
+          <FormField
+            control={control}
+            name="imageUrl"
+            render={({ field: { value, onChange } }) => (
+              <FormItem>
+                <FormLabel>Background image</FormLabel>
+                <FormControl>
+                  <ImageUpload
+                    value={value ? [value] : []}
+                    disabled={loading}
+                    onChange={(url) => onChange(url)}
+                    onRemove={() => onChange("")}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
           <div className="grid grid-cols-3 gap-8">
             <FormField
               control={control}
