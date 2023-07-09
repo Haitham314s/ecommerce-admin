@@ -7,6 +7,7 @@ import * as z from "zod";
 import { useStoreModal } from "@/hooks/UseStoreModal";
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { Button } from "../ui/Button";
 import {
   Form,
@@ -45,9 +46,12 @@ function StoreModal() {
       setLoading(true);
 
       const response = await axios.post("/api/stores", values);
+
       console.log(response.data);
+      toast.success("Store created.");
     } catch (error: any) {
       console.error(error.message);
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
