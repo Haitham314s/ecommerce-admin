@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { useStoreModal } from "@/hooks/UseStoreModal";
+import axios from "axios";
+import { useState } from "react";
 import { Button } from "../ui/Button";
 import {
   Form,
@@ -23,6 +25,8 @@ const formSchema = z.object({
 
 function StoreModal() {
   const storeModal = useStoreModal();
+
+  const [loading, setLoading] = useState<boolean>(false);
   const [isOpen, onClose] = [storeModal.isOpen, storeModal.onClose];
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,7 +41,16 @@ function StoreModal() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
 
-    // TODO: Create store
+    try {
+      setLoading(true);
+
+      const response = await axios.post("/api/stores", values);
+      console.log(response.data);
+    } catch (error: any) {
+      console.error(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -58,7 +71,11 @@ function StoreModal() {
                   <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Ecommerce" {...field} />
+                      <Input
+                        disabled={loading}
+                        placeholder="Ecommerce"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -66,10 +83,12 @@ function StoreModal() {
               />
 
               <div className="pt-6 space-x-2 flex items-center justify-end">
-                <Button variant="outline" onClick={onClose}>
+                <Button disabled={loading} variant="outline" onClick={onClose}>
                   Cancel
                 </Button>
-                <Button type="submit">Continue</Button>
+                <Button disabled={loading} type="submit">
+                  Continue
+                </Button>
               </div>
             </form>
           </Form>
