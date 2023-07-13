@@ -25,7 +25,7 @@ async function CategoryPage({ params: { storeId } }: CategoryPageProps) {
     id: item.id,
     name: item.name,
     billboardLabel: item.billboard.label,
-    createdAt: format(item.createdAt, "MMMM do, yyyy") as string,
+    createdAt: format(item.createdAt, "MMMM dd, yyyy") as string,
   }));
 
   return (
