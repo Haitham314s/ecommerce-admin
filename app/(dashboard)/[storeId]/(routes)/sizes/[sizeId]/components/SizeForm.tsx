@@ -21,18 +21,11 @@ import {
 } from "@/components/ui/Form";
 import Heading from "@/components/ui/Heading";
 import { Input } from "@/components/ui/Input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/Select";
 import { Separator } from "@/components/ui/Separator";
 
 const formSchema = z.object({
   name: z.string().min(1),
-  billboardId: z.string().min(1),
+  value: z.string().min(1),
 });
 
 type SizeFormValues = z.infer<typeof formSchema>;
@@ -57,7 +50,7 @@ function SizeForm({ initialData }: SizeFormProps) {
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       name: "",
-      billboardId: "",
+      value: "",
     },
   });
 
@@ -93,7 +86,7 @@ function SizeForm({ initialData }: SizeFormProps) {
       toast.success("Size deleted.");
       router.push(`/${params.storeId}/sizes`);
     } catch (error: any) {
-      toast.error("Make sure you removed all sizes first.");
+      toast.error("Make sure you removed all products using this sizes first.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -116,7 +109,7 @@ function SizeForm({ initialData }: SizeFormProps) {
           <Button
             disabled={loading}
             variant="destructive"
-            size="sm"
+            size="icon"
             onClick={() => setOpen(true)}
           >
             <Trash className="h-4 w-4" />
@@ -147,34 +140,16 @@ function SizeForm({ initialData }: SizeFormProps) {
 
             <FormField
               control={control}
-              name="billboardId"
-              render={({ field: { value, onChange } }) => (
+              name="value"
+              render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Billboard ID</FormLabel>
+                  <FormLabel>Value</FormLabel>
                   <FormControl>
-                    <Select
+                    <Input
                       disabled={loading}
-                      onValueChange={onChange}
-                      value={value}
-                      defaultValue={value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue
-                            defaultValue={value}
-                            placeholder="Select a billboard id"
-                          />
-                        </SelectTrigger>
-                      </FormControl>
-
-                      <SelectContent>
-                        {billboards.map((billboard) => (
-                          <SelectItem key={billboard.id} value={billboard.id}>
-                            {billboard.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                      placeholder="Size value"
+                      {...field}
+                    />
                   </FormControl>
                 </FormItem>
               )}
