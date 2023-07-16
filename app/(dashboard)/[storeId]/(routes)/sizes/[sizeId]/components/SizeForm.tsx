@@ -18,6 +18,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/Form";
 import Heading from "@/components/ui/Heading";
 import { Input } from "@/components/ui/Input";
@@ -134,6 +135,7 @@ function SizeForm({ initialData }: SizeFormProps) {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -151,6 +153,7 @@ function SizeForm({ initialData }: SizeFormProps) {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />

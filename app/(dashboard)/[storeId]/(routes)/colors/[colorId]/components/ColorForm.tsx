@@ -18,6 +18,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/Form";
 import Heading from "@/components/ui/Heading";
 import { Input } from "@/components/ui/Input";
@@ -136,6 +137,7 @@ function ColorForm({ initialData }: ColorFormProps) {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -159,6 +161,7 @@ function ColorForm({ initialData }: ColorFormProps) {
                       />
                     </div>
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />

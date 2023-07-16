@@ -18,6 +18,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/Form";
 import Heading from "@/components/ui/Heading";
 import { Input } from "@/components/ui/Input";
@@ -146,6 +147,7 @@ function CategoryForm({ billboards, initialData }: CategoryFormProps) {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -181,6 +183,7 @@ function CategoryForm({ billboards, initialData }: CategoryFormProps) {
                       </SelectContent>
                     </Select>
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />

@@ -4,11 +4,11 @@ import { format } from "date-fns";
 import CategoryClient from "./components/Client";
 import { CategoryColumn } from "./components/Columns";
 
-interface CategoryPageProps {
+interface CategoriesPageProps {
   params: { storeId: string };
 }
 
-async function CategoryPage({ params: { storeId } }: CategoryPageProps) {
+async function CategoriesPage({ params: { storeId } }: CategoriesPageProps) {
   const categories = await prismadb.category.findMany({
     where: {
       storeId,
@@ -37,4 +37,4 @@ async function CategoryPage({ params: { storeId } }: CategoryPageProps) {
   );
 }
 
-export default CategoryPage;
+export default CategoriesPage;

@@ -18,6 +18,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/Form";
 import Heading from "@/components/ui/Heading";
 import ImageUpload from "@/components/ui/ImageUpload";
@@ -137,6 +138,7 @@ function BillboardForm({ initialData }: BillboardFormProps) {
                     onRemove={() => onChange("")}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -155,6 +157,7 @@ function BillboardForm({ initialData }: BillboardFormProps) {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
