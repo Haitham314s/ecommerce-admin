@@ -39,7 +39,6 @@ export async function POST(
       return new NextResponse("Color id is required", { status: 400 });
     if (!images || !images.length)
       return new NextResponse("Images are required", { status: 400 });
-
     if (!storeId)
       return new NextResponse("Store id is required", { status: 400 });
 
