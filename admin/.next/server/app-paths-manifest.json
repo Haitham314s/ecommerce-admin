@@ -1,0 +1,7 @@
+{
+  "/(dashboard)/[storeId]/(routes)/products/page": "app/(dashboard)/[storeId]/(routes)/products/page.js",
+  "/(dashboard)/[storeId]/(routes)/orders/page": "app/(dashboard)/[storeId]/(routes)/orders/page.js",
+  "/(dashboard)/[storeId]/(routes)/colors/page": "app/(dashboard)/[storeId]/(routes)/colors/page.js",
+  "/(dashboard)/[storeId]/(routes)/billboards/page": "app/(dashboard)/[storeId]/(routes)/billboards/page.js",
+  "/(dashboard)/[storeId]/(routes)/colors/[colorId]/page": "app/(dashboard)/[storeId]/(routes)/colors/[colorId]/page.js"
+}
