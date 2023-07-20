@@ -36,7 +36,7 @@ function Info({ data }: InfoProps) {
       </div>
 
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-2">Add to cart</Button>
+        <Button className="flex items-center gap-x-2 text-white">Add to cart</Button>
       </div>
     </div>
   );
