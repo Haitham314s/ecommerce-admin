@@ -1,4 +1,4 @@
-type Props = {};
+interface Props {};
 
 function Overview({}: Props) {
   return <div>Overview</div>;

@@ -1,4 +1,4 @@
-type Props = {};
+interface Props {}
 
 function Avatar({}: Props) {
   return <div>Avatar</div>;

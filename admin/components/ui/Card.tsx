@@ -1,4 +1,4 @@
-type Props = {};
+interface Props {}
 
 function Card({}: Props) {
   return <div>Card</div>;

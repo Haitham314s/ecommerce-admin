@@ -1,4 +1,4 @@
-type Props = {};
+interface Props {}
 
 function UserNav({}: Props) {
   return <div>UserNav</div>;
