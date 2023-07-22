@@ -1,6 +1,7 @@
 import { formatter } from "@/lib/utils";
 import { CreditCard, DollarSign, Package } from "lucide-react";
 
+import { getGraphRevenue } from "@/actions/getGraphRevenue";
 import { getSalesCount } from "@/actions/getSalesCount";
 import { getStockCount } from "@/actions/getStockCount";
 import { getTotalRevenue } from "@/actions/getTotalRevenue";
@@ -16,6 +17,7 @@ async function DashboardPage({ params: { storeId } }: DashboardPageProps) {
   const totalRevenue = await getTotalRevenue(storeId);
   const salesCount = await getSalesCount(storeId);
   const stockCount = await getStockCount(storeId);
+  const graphRevenue = await getGraphRevenue(storeId);
 
   return (
     <div className="flex-col">
@@ -48,8 +50,9 @@ async function DashboardPage({ params: { storeId } }: DashboardPageProps) {
 
           <CardItem
             title="Overview"
+            cardClassName="col-span-4"
             contentClassName="pl-2"
-            content={<Overview />}
+            content={<Overview data={graphRevenue} />}
           />
         </div>
       </div>
