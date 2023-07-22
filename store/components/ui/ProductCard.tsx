@@ -8,7 +8,7 @@ import { MouseEventHandler } from "react";
 
 import Currency from "@/components/ui/Currency";
 import IconButton from "@/components/ui/IconButton";
-import usePreviewModal from "@/hooks/UsePreviewModal";
+import usePreviewModal from "@/hooks/usePreviewModal";
 
 interface ProductCardProps {
   data: Product;
