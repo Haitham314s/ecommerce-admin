@@ -1,8 +1,10 @@
 "use client";
 
-import Container from "@/components/ui/Container";
 import useCart from "@/hooks/useCart";
+
+import Container from "@/components/ui/Container";
 import CartItem from "./components/CartItem";
+import Summary from "./components/Summary";
 
 interface Props {}
 
@@ -27,6 +29,8 @@ function CartPage({}: Props) {
                 ))}
               </ul>
             </div>
+
+            <Summary />
           </div>
         </div>
       </Container>
