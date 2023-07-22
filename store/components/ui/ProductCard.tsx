@@ -8,6 +8,7 @@ import { MouseEventHandler } from "react";
 
 import Currency from "@/components/ui/Currency";
 import IconButton from "@/components/ui/IconButton";
+import useCart from "@/hooks/useCart";
 import usePreviewModal from "@/hooks/usePreviewModal";
 
 interface ProductCardProps {
@@ -15,7 +16,8 @@ interface ProductCardProps {
 }
 
 function ProductCard({ data }: ProductCardProps) {
-  const [onOpen] = usePreviewModal((state) => [state.onOpen]);
+  const addItem = useCart((state) => state.addItem);
+  const onOpen = usePreviewModal((state) => state.onOpen);
   const router = useRouter();
 
   const handleClick = () => {
@@ -26,6 +28,12 @@ function ProductCard({ data }: ProductCardProps) {
     e.stopPropagation();
 
     onOpen(data);
+  };
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+
+    addItem(data);
   };
 
   return (
@@ -49,20 +57,18 @@ function ProductCard({ data }: ProductCardProps) {
             />
 
             <IconButton
-              onClick={() => {}}
+              onClick={onAddToCart}
               icon={<ShoppingCart size={20} className="text-gray-600" />}
             />
           </div>
         </div>
       </div>
 
-      {/* Description */}
       <div>
         <p className="font-semibold text-lg">{data.name}</p>
         <p className="text-sm text-gray-500">{data.category?.name}</p>
       </div>
 
-      {/* Price */}
       <div className="flex items-center justify-between">
         <Currency value={data?.price} />
       </div>

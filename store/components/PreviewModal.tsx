@@ -1,14 +1,14 @@
 "use client";
 
+import usePreviewModal from "@/hooks/usePreviewModal";
+
 import Info from "@/components/Info";
 import Gallery from "@/components/gallery";
 import Modal from "@/components/ui/Modal";
-import usePreviewModal from "@/hooks/usePreviewModal";
 
 interface Props {}
 
 function PreviewModal({}: Props) {
-  const previewModal = usePreviewModal();
   const [isOpen, onClose, product] = usePreviewModal((state) => [
     state.isOpen,
     state.onClose,
